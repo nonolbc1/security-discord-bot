@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require("discord.js");
 
-const sendEmbeds = require("../Handlers/sendEmbeds");
+const sendEmbeds = require("../Handlers/sendEmbeds.js");
+const config = require("../config");
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -30,7 +31,7 @@ module.exports = {
         const title = "Request";
         const author = interaction.user.tag;
         const description = `${reason} | Requête de \"${request}\" | Demandé par: ${author}`;
-        const channel = "1420132724500332544";
+        const channel = config.channels.request || "1420132724500332544";
         const color = "#3100E3";
 
         const member = await interaction.guild.members.fetch(user.id).catch(() => null);

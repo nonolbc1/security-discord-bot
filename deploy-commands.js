@@ -1,6 +1,7 @@
 require("dotenv").config();
 const { REST, Routes } = require("discord.js");
 const fs = require("fs");
+const config = require("./config");
 
 module.exports = async function deployCommands() {
     const commands = [];
@@ -14,8 +15,14 @@ module.exports = async function deployCommands() {
 
     const rest = new REST({ version: "10" }).setToken(process.env.TOKEN);
 
-    const clientId = "1420392511545016392"; 
-    const guildId = "1420029191134646384";
+    const clientId = config.clientId;
+    const guildId = config.guildId;
+    
+    if (!clientId || !guildId) {
+        console.log("[0x01] ⚠️ CLIENT_ID et GUILD_ID sont requis pour déployer les commandes slash.");
+        console.log("[0x01] Veuillez définir CLIENT_ID et GUILD_ID dans votre fichier .env");
+        return;
+    }
 
     (async () => {
         try {

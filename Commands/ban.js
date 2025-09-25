@@ -1,7 +1,7 @@
 const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
 
-const sendEmbeds = require("../Handlers/sendEmbeds");
-const bot = require("../index");
+const sendEmbeds = require("../Handlers/sendEmbeds.js");
+const config = require("../config");
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -31,12 +31,12 @@ module.exports = {
         const title = "Ban";
         const author = interaction.user.tag;
         const description = `${reason} | Auteur: ${author}`;
-        const channel_public = "1420130911139266710";
-        const channel_private = "1420427666103865400";
+        const channel_public = config.channels.public;
+        const channel_private = config.channels.private;
         const color = "#E30000";
 
-        const owner = "1420114830366347355";
-        const coowner = "1420115040429674658";
+        const owner = config.roles.owner;
+        const coowner = config.roles.coowner;
 
         const member = await interaction.guild.members.fetch(user.id).catch(() => null);
 
