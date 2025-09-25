@@ -1,0 +1,17 @@
+# Environnement
+.env
+
+# Dépendances
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# (Optionnel) lockfile
+# package-lock.json
